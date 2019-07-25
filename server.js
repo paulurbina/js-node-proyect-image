@@ -21,11 +21,14 @@ mongoose.connect(urlNativeConnection, { useNewUrlParser: true}, (err, db) => {
     }
 });
 
-// middlewares and template
-app.use(fileUpload());
+//settings
+app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, '/public')));
-app.engine('ejs',ejsmate);
-app.set('view engine', ejs); 
+app.set('view engine', '.ejs'); 
+app.engine('.ejs',ejsmate);
+
+// middlewares
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
