@@ -45,11 +45,30 @@ module.exports = (app) => {
 
         });
 
+        // edit Pin Form
         app.route('/pins/edit/:id')
             .get((req, res, next) => {
                 Pin.findOne({ _id: req.params.id }, (err, foundPinEdit) => {
                     if(err) throw err;
                     res.render('pins/edit', { foundPinEdit })
+                });
+            })
+            .post((req, res, next) => {
+                Pin.findOne({ _id: req.params.id }, (err, foundPinEdit) => {
+
+                    // validation inputs with data exist
+                    if(foundPinEdit) {
+                        if(req.body.title) foundPinEdit.title = req.body.title;
+                        if(req.body.desc) foundPinEdit.desc = req.body.desc;
+
+                        // save data input
+                        foundPinEdit.save((err) => {
+                            if(err) return next(err);
+                            // show pin edit
+                            res.render('pins/details/' + foundPinEdit._id);
+                        });
+                    }
+
                 });
             });
 
