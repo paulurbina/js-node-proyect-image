@@ -49,6 +49,6 @@ module.exports = (app) => {
             Pin.find({}, (err, pins) => {
                 // send pins a index template
                 res.render('pins/index', { pins })
-            })
+            });
         });
 }
