@@ -35,6 +35,7 @@ app.use(morgan('dev'));
 
 // routes
 require('./routes/main')(app);
+require('./routes/pins')(app);
 
 //listening server
 app.listen(PORT, (err) => {
