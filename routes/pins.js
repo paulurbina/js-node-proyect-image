@@ -4,6 +4,13 @@ const Pin = require('../models/Pin');
 
 module.exports = (app) => {
 
+    // save pins
+    app.get('/pins/saved-pins', (req, res, next) => {
+        Pin.find({ "isSave": true }, (err, pins) => {
+            res.render('pins/index', { pins })
+        });
+    });
+
     // pins favorites
     app.get('/pins/pin-save/:id', (req, res, next) => {
         Pin.findOne({ _id: req.params.id }, (err, foundPinSave) => {
