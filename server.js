@@ -22,9 +22,9 @@ mongoose.connect(urlNativeConnection, { useNewUrlParser: true}, (err, db) => {
 });
 
 //settings
-app.set('views', path.join(__dirname, '/views'));
-app.use(express.static(path.join(__dirname, '/public')));
-app.set('view engine', '.ejs'); 
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs'); 
 app.engine('.ejs',ejsmate);
 
 // middlewares
