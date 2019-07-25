@@ -2,9 +2,9 @@
  
 <div class="container">
     <div class="row">
-        <div id="">
+        <div id="pins">
             <% for(let i=0; i < pins.length; i++){%>
-                <div class="col-md-4" style="margin:20px;">
+                <div class="box" style="margin:20px;">
                     <a href="/pins/details/<%= pins[i]._id %>">
                         <img src="<%= pins[i].path %>" style="width: 200px;" />
                     </a>
@@ -24,3 +24,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        return $('#pins').imagesLoaded(function() {
+            return $('#pins').masonry({
+                itemSelector: '.box',
+                isFitWidth: true
+            });
+        });
+    });
+</script>
