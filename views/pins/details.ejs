@@ -1,0 +1,29 @@
+<% layout('layout') -%> 
+
+<style>
+    .image-top {
+        width: 24rem;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 offset-md-4">
+            <img class="image-top" src="<%- foundPin.path %>" />
+            <div class="card" style="width: 24rem;">
+                <div class="card-body">
+                    <h4 class="card-title"><%- foundPin.title %></h4>
+                    <p class="card-text">
+                        <%- foundPin.desc %>
+                    </p>
+                   <div class="btn-group">
+                     <a href="/pins/pin-save/<%= foundPin._id %>" class="btn btn-default">
+                        <i class="fa <%= (foundPin.isSave)? 'fa-star':'fa-star-o' %> fa-lg"></i>
+                     </a>
+                    <a href="#" class="btn btn-default">Edit</a>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

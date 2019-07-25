@@ -59,7 +59,7 @@ module.exports = (app) => {
                     if(err) {
                         return res.status(404).send(err);
                     } else {
-                        res.render('pin/details', { foundPin });
+                        res.render('pins/details', { foundPin });
                     }
                 });
         });
