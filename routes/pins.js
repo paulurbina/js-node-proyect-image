@@ -52,6 +52,18 @@ module.exports = (app) => {
             });
         });
 
+        // pin details
+        app.get('/pins/details/:id', (req, res, next) => {
+            Pin.findOne({ _id: req.params.id })
+                .exec((err, foundPin) => {
+                    if(err) {
+                        return res.status(404).send(err);
+                    } else {
+                        res.render('pin/details', { foundPin });
+                    }
+                });
+        });
+
         // dremove item by id
         app.get('/pins/delete/:id', (req, res, next) => {
             Pin.find({ _id: req.params.id }).remove()
