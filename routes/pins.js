@@ -44,6 +44,16 @@ module.exports = (app) => {
             });
 
         });
+
+        app.route('/pins/edit/:id')
+            .get((req, res, next) => {
+                Pin.findOne({ _id: req.params.id }, (err, foundPinEdit) => {
+                    if(err) throw err;
+                    res.render('pins/edit', { foundPinEdit })
+                });
+            });
+
+
         // search all pins
         app.get('/pins/index', (req, res, next) => {
             Pin.find({}, (err, pins) => {
