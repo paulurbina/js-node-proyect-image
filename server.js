@@ -31,9 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // routes
-app.get('/', (req, res) => {
-    res.send('hello');
-});
+require('./routes/main')(app);
 
 //listening server
 app.listen(PORT, (err) => {
