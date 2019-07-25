@@ -4,6 +4,14 @@ const Pin = require('../models/Pin');
 
 module.exports = (app) => {
 
+    // search pins
+    app.get('/pins/pin-search', (req, res, next) => {
+        Pin.find({ "title" : { "$regex": req.query['search'], "$options": "1" }}, (err, pins) => {
+            if(err) throw err;
+            res.render('pins/index', { pins });
+        });
+    });
+
     // save pins
     app.get('/pins/saved-pins', (req, res, next) => {
         Pin.find({ "isSave": true }, (err, pins) => {
