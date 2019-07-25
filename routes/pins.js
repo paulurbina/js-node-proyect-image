@@ -51,4 +51,16 @@ module.exports = (app) => {
                 res.render('pins/index', { pins })
             });
         });
+
+        // dremove item by id
+        app.get('/pins/delete/:id', (req, res, next) => {
+            Pin.find({ _id: req.params.id }).remove()
+                .exec((err, foundPin) => {
+                    if(err) {
+                        return res.status(404).send(err);
+                    } else {
+                        res.redirect('/pins/index');
+                    }
+                });
+        });
 }
