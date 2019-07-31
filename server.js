@@ -32,6 +32,11 @@ app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.use(function(req, res, next) {
+    res.locals.ajax = req.xhr;
+    res.setHeader('Location', req.url);
+    next();
+});
 
 // routes
 require('./routes/main')(app);
