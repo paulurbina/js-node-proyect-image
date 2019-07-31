@@ -15,10 +15,11 @@
                     </h2>
                     <p>
                         Submitted by <%= pins[i].username %>
-                        <a class="btn btn-outline-danger btn-sm" href="/pins/delete/<%= pins[i]._id %>">
-                            Delete
-                        </a>
+                        
                     </p>
+                    <a class="btn btn-outline-danger btn-sm" href="/pins/delete/<%= pins[i]._id %>">
+                        Delete
+                    </a>
                 </div>
             <%}%>
         </div>
