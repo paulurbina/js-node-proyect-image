@@ -98,7 +98,7 @@ module.exports = (app) => {
                         foundPinEdit.save((err) => {
                             if(err) return next(err);
                             // show pin edit
-                            res.redirect('pins/details/' + foundPinEdit._id);
+                            res.redirect('/pins/details/' + foundPinEdit._id);
                         });
                     }
 
